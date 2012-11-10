@@ -72,13 +72,20 @@ Pre-Requesets
 Sane Key Config
 ---------------
 
+Basic Movment
+
 * scroll M-up / M-down
 * moveword M-left / M-right
+* find anything current file M-f
+* goto line C-g
+* acemove
 
+Smart Tabing
 
 * tab in line / region tab
 * tab out line / region S-tab
 
+Basic Editing
 
 * undo C-z
 * redo C-y
@@ -91,6 +98,7 @@ Sane Key Config
 * kill current line M-k
 * duplicate current line C-d
 
+Dealing with files
 
 * save C-s
 * rename C-S-s
@@ -100,38 +108,44 @@ Sane Key Config
 * open file navigator M-o
 * open directory at file M-e
 
+Controling the minibuffer
 
 * cancel minibuffer escape
 * refocus minibuffer C-9
 
+Dealing wit buffers
 
 * choose buffer C-space
 * choose buffer / file / recent C-S-space
 * close buffer C-0
+* close many buffers
 * next / prev buffer C-right/left
 * next / prev frame C-tab / C-S-tab
 
+Searching the buffer
 
 * search current file c-f
 * search-replace current file c-s-f
-* find anything current file M-f
-* goto line C-g
 
+In search minibuffer
 
 * searchmode previous search C-up
 * searchmode escape esc or arrows
 
+Searching in multiple files
 
 * find in file in project F1
 * find in file anywhere F2
 * find function in file F3
 * find function in project S-F3
 
+Publishing
 
 * share on haste F4
 * new blog post S-F4
 * publish blog post M-F4
 
+Dealing with frames
 
 * split window | F5
 * split window - F6
@@ -140,6 +154,7 @@ Sane Key Config
 * enlarge window - F9
 * enlarge window | F10
 
+Version Control
 
 * svn log F12
 * svn log repository C-S-F12
@@ -147,13 +162,16 @@ Sane Key Config
 * svn diff M-F12
 * svn commit F11
 * svn commit repository C-S-F11
+* magit
 
+Code completion
 
 * snippit completion tab
 * code completion S-space
 * zen coding C-1
 * comment / uncomment C-2
 
+Code documentation
 
 * look up in google C-l
 * look up php function C-S-l
@@ -161,16 +179,16 @@ Sane Key Config
 * read link in emacs S-M-l
 * look up drupal function M-d
 
+Command prompts
 
 * shell home C-5
 * shell here C-6
 
+Org Mode
 
 * org next file
 * org projects 
 * org new file 
-
-
 * org collapse tab
 * org change timestamp S-up / S-down
 * org toggle todo S-left/right
@@ -179,11 +197,13 @@ Sane Key Config
 * org archive current line C-S-a
 * org schedule item C-p
 
+Bookmarks
 
 * set a bookmark C-b
 * jump to bookmark C-S-b
 * unset bookmark M-b
 
+Emacs
 
 * emacs command M-x
 * emacs parser
