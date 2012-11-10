@@ -75,8 +75,10 @@ Sane Key Config
 * scroll M-up / M-down
 * moveword M-left / M-right
 
+
 * tab in line / region tab
 * tab out line / region S-tab
+
 
 * undo C-z
 * redo C-y
@@ -89,6 +91,7 @@ Sane Key Config
 * kill current line M-k
 * duplicate current line C-d
 
+
 * save C-s
 * rename C-S-s
 * new file here ??
@@ -97,8 +100,10 @@ Sane Key Config
 * open file navigator M-o
 * open directory at file M-e
 
+
 * cancel minibuffer escape
 * refocus minibuffer C-9
+
 
 * choose buffer C-space
 * choose buffer / file / recent C-S-space
@@ -106,22 +111,27 @@ Sane Key Config
 * next / prev buffer C-right/left
 * next / prev frame C-tab / C-S-tab
 
+
 * search current file c-f
 * search-replace current file c-s-f
 * find anything current file M-f
 * goto line C-g
 
+
 * searchmode previous search C-up
 * searchmode escape esc or arrows
+
 
 * find in file in project F1
 * find in file anywhere F2
 * find function in file F3
 * find function in project S-F3
 
+
 * share on haste F4
 * new blog post S-F4
 * publish blog post M-F4
+
 
 * split window | F5
 * split window - F6
@@ -130,6 +140,7 @@ Sane Key Config
 * enlarge window - F9
 * enlarge window | F10
 
+
 * svn log F12
 * svn log repository C-S-F12
 * svn prevdiff S-F12
@@ -137,10 +148,12 @@ Sane Key Config
 * svn commit F11
 * svn commit repository C-S-F11
 
+
 * snippit completion tab
 * code completion S-space
 * zen coding C-1
 * comment / uncomment C-2
+
 
 * look up in google C-l
 * look up php function C-S-l
@@ -148,12 +161,15 @@ Sane Key Config
 * read link in emacs S-M-l
 * look up drupal function M-d
 
+
 * shell home C-5
 * shell here C-6
+
 
 * org next file
 * org projects 
 * org new file 
+
 
 * org collapse tab
 * org change timestamp S-up / S-down
@@ -163,9 +179,11 @@ Sane Key Config
 * org archive current line C-S-a
 * org schedule item C-p
 
+
 * set a bookmark C-b
 * jump to bookmark C-S-b
 * unset bookmark M-b
+
 
 * emacs command M-x
 * emacs parser
