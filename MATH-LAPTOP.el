@@ -26,9 +26,6 @@
 ;; -- kill the whole line
 (setq kill-whole-line t)
 
-; to answer y or n instead of yes or no :-P ...I'm too lazy
-(defalias 'yes-or-no-p 'y-or-n-p) 
-
 ;; -- surpress shell exit warnings
 (add-hook 'shell-mode-hook 
           (lambda () 

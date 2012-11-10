@@ -9,6 +9,9 @@
      (list (cons 'left-fringe 15)
 	   (cons 'right-fringe 3)))
 
+; to answer y or n instead of yes or no :-P ...I'm too lazy
+(defalias 'yes-or-no-p 'y-or-n-p) 
+
 ;;disable all bold fonts
  (mapc
   (lambda (face)
