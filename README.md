@@ -1,3 +1,21 @@
+A drupal development focused emacs config for windows and cygwin based on emacs-starter-kit and the ELPA package system.
+
+![screenshots](http://floatsolutions.com/docs/emacs.png)
+
+Installation
+
+* Place the following in your .emacs or init.el file:
+```lisp
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(package-initialize)
+  ```
+* Place the content of the repository in your "~/.emacs.d" directory
+* Rename the "~/.emacs.d/MATH" directory to your "USERNAME"
+* Rename the "~/.emacs.d/MATH-LAPTOP.el" file to your "USERNAME-SYSTEMNAME"
+
 Drupal Features
 
 * Find in Drupal
