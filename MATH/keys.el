@@ -172,12 +172,18 @@
   ;; org toggle todo S-left/right
   ;; org new line heading M-enter
   ;; org archive current line C-S-a
-  ;(define-key org-mode-map (kbd "C-S-a") 'org-archive-subtree)
-  ;(define-key org-mode-map (kbd "C-t") 'org-todo)
-  ;(define-key org-mode-map (kbd "C-p") 'my-org-schedule)
-  ;(define-key org-mode-map (kbd "C-S-p") 'org-schedule)
-  ;(define-key org-mode-map (kbd "C-s") 'my-org-save)
-
+;  (define-key org-mode-map (kbd "C-S-a") 'org-archive-subtree)
+;  (define-key org-mode-map (kbd "C-t") 'org-todo)
+;  (define-key org-mode-map (kbd "C-p") 'my-org-schedule)
+;  (define-key org-mode-map (kbd "C-S-p") 'org-schedule)
+;  (define-key org-mode-map (kbd "C-s") 'my-org-save)
+(add-hook 'org-mode-hook (lambda ()
+  (message "ORG Mode Keys Activated")
+  (define-key org-mode-map (kbd "C-S-a") 'org-archive-subtree)
+  (define-key org-mode-map (kbd "C-t") 'org-todo)
+  (define-key org-mode-map (kbd "C-p") 'my-org-schedule)
+  (define-key org-mode-map (kbd "C-S-p") 'org-schedule)
+  (define-key org-mode-map (kbd "C-s") 'my-org-save)))
 
   ;;(define-key dired-mode-map (kbd "") 'dired-find-alternate-file)
 

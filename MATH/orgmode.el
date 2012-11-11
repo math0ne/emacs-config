@@ -1,23 +1,25 @@
 ;; -- setup various org mode stuff
 ;; -- TODO give this it's own file
 ;; Set to the location of your Org files on your local system
-(setq org-directory "Y:/home/org")
+;(setq org-directory "Y:/home/org")
 ;; Set to the name of the file where new notes will be stored
-(setq org-mobile-inbox-for-pull "Y:/home/org/mobile.org")
-(setq org-mobile-directory "Y:/MobileOrg")
-(setq org-mobile-files (file-expand-wildcards "~/org/*.org"))
-(setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
-(setq org-startup-folded "showall")
-(setq org-default-notes-file (concat org-directory "/capture.org"))
-(setq org-mobile-force-id-on-agenda-items nil)
+;(setq org-mobile-inbox-for-pull "Y:/home/org/mobile.org")
+;(setq org-mobile-directory "Y:/MobileOrg")
+;(setq org-mobile-files (file-expand-wildcards "~/org/*.org"))
+;(setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
+;(setq org-startup-folded "showall")
+;(setq org-default-notes-file (concat org-directory "/capture.org"))
+;(setq org-mobile-force-id-on-agenda-items nil)
 ;;  org capture templates
-(setq org-capture-templates
-'(("c" "Scratch" entry (file+headline "~/org/capture.org" "Input")
-       "* %?\n  %i\n  %a")
-  ("t" "Todo" entry (file+headline "~/org/projects.org" "Tasks")
-       "* TODO %?\n  %i\n  %a")
-  ("j" "Journal" entry (file+datetree "~/org/journal.org")
-       "* %?\nEntered on %U\n  %i\n  %a")))
+;
+;
+;(setq org-capture-templates
+;'(("c" "Scratch" entry (file+headline "~/org/capture.org" "Input")
+;   "* %?\n  %i\n  %a")
+;("t" "Todo" entry (file+headline "~/org/projects.org" "Tasks")
+; "* TODO %?\n  %i\n  %a")
+;("j" "Journal" entry (file+datetree "~/org/journal.org")
+; "* %?\nEntered on %U\n  %i\n  %a")))
 
 ;; -- Display images in org mode
 ;; enable image mode first

@@ -5,6 +5,7 @@ A drupal development focused emacs config for windows and cygwin based on emacs-
 Installation
 ------------
 
+* Meet the pre-requasists below
 * Place the following in your .emacs or init.el file:
 
 ```lisp
@@ -18,6 +19,8 @@ Installation
 * Place the content of the repository in your "~/.emacs.d" directory
 * Rename the "~/.emacs.d/MATH" directory to your "USERNAME"
 * Rename the "~/.emacs.d/MATH-LAPTOP.el" file to your "USERNAME-SYSTEMNAME"
+* On windows 7 you must "Take ownership" of the "~/.emacs.d/server" directory
+* Make sure the cygwin/bin path is before other directories in you path variable
 
 Drupal Features
 ---------------
@@ -61,7 +64,7 @@ Features
 Pre-Requesets
 -------------
 
-* Cygwin
+* Cygwin (grep, git, svn, find, etc)
 * NTEmacs
 * TortoiseSVN
 * Mysql (cygwin ports)
