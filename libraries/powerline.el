@@ -311,7 +311,7 @@ install the memoized function over the original function."
                                    "-"
                                    (if fg
                                        (format "%s" fg)
-                                     "white")))))
+                                     "#7b7b7b")))))
         (make-face cface)2
         (if fg
             (if (eq fg 0)
@@ -323,7 +323,7 @@ install the memoized function over the original function."
                                   :background bg
                                   :box nil))
           (set-face-attribute cface nil
-                            :foreground "white"
+                            :foreground "#7b7b7b"
                             :background bg
                             :box nil))
         cface)
@@ -464,11 +464,14 @@ install the memoized function over the original function."
             nil))))
 
 (defpowerline arrow       "")
-(defpowerline buffer-id   (propertize (car (propertized-buffer-identification "%12b"))
+
+
+(defpowerline buffer-id   (propertize (car (propertized-buffer-identification "%b"))
                                       'face (powerline-make-face color1)))
+
 (defvar powerline-buffer-size-suffix t)
 (defpowerline buffer-size (propertize
-                            (if powerline-buffer-size-suffix
+                            (if powerline-buffer-size-suffiqx
                                 "%I"
                               "%i")
                             'local-map (make-mode-line-mouse-map

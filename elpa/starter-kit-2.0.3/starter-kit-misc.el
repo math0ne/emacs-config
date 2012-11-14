@@ -53,7 +53,7 @@
       shift-select-mode nil
       mouse-yank-at-point t
       uniquify-buffer-name-style 'forward
-      whitespace-style '(face trailing lines-tail tabs)
+      ;;whitespace-style '(face trailing lines-tail tabs)
       whitespace-line-column 80
       ediff-window-setup-function 'ediff-setup-windows-plain
       oddmuse-directory "~/.emacs.d/oddmuse"
@@ -90,11 +90,12 @@
       ido-max-prospects 10)
 
 (set-default 'indent-tabs-mode nil)
-(set-default 'indicate-empty-lines t)
+;(set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+;;this is not working, no idea why
+;(add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'auto-tail-revert-mode 'tail-mode)

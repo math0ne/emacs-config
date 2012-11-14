@@ -124,7 +124,7 @@
 
 		;; cmd(  ){ - style construction
 		(progn
-		  (insert " ")(set-register 98 (point-marker))(insert " ){")))
+		  (insert "")(set-register 98 (point-marker))(insert "){")))
 	      (php-electric-insert-new-line-and-statement-end)
 	      (jump-to-register 98)(set-register 98 nil))
 	  (if (php-electric-line-is-expandible-as-func)
@@ -161,7 +161,7 @@
   (self-insert-command (prefix-numeric-value arg))
   (if (php-electric-is-code-at-point-p)
       (save-excursion
-	(insert (cdr (assoc last-command-char
+	(insert (cdr (assoc last-command-event
 			    php-electric-matching-delimeter-alist))))))
 
 ;; checks if the current pointer situated in a piece of code

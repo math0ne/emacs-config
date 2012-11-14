@@ -25,29 +25,35 @@ Installation
 Drupal Features
 ---------------
 
-* Find in Drupal
-* Drupal Documentation
-* Drupal Project Awareness
-* Drupal AutoComplete (Drupal 6 ATM)
-* Drupal Coding Standards
-* Drupal Mode from ELPA
+* Automatic drupal project awareness
+* Find files in drupal project
+* Version control function on drupal project
+* Drupal documentation lookups
+* Drupal autoComplete dictionary (drupal 6 atm)
+* PHP mode setup drupal coding standards
+* Drupal mode from ELPA included
+* - Provides some drush integration
+* - Flymake project awareness
+* - Tag project awareness (gtag/etag)
+* Manage a drupal site through Org-Mode
 
 Features
 --------
 
-* Fully configured html / css / php modes
+* Fully configured html / css / php / js modes
 * Windows Keyboard Shortcuts
-* Visual Undo History
-* File backups
+* Visual Branching Undo History
+* Automatic File backups
 * PHP / CSS / JS Electric Modes
 * PHP Function Doc Popups
 * Project / Version Control Awareness
 * Firefox'esc search functionality
 * Smart Cursor
 * IDO mode
-* Cygwin for command line
-* Improved Menu Bar
-* Code Completion
+* Cygwin support for command line
+* Improved menu bar
+* Single buffer dired
+* Code Completion for css / js / html and php
 * Snippits
 * Zen Coding for HTML
 * Find File in Project
@@ -55,22 +61,46 @@ Features
 * Tortoise SVN Support
 * Tortoise Git Support
 * Visual Bookmarks
+* Git support (magit)
+* SVN support (svn)
 * Improved Occur Mode
 * Customized zenburn color theme
 * Sane Key Config
 * Consistant minibuffer managment
 * PowerGREP Support
+* Browse all functions in file
+* Browse to function definition at point (project aware)
+* Beyond compare support
+* Browse url in emacs
+* Clean mode line
+* Growl popups for appointments
+* Code folding
+* Smart Indenting
+* Images in org mode
+* Google and org mode interated calendar
+* Publish org mode calendar to google
+* Elisp auto complete powered by slime
+* Adaptive wrapping of lone lines
+
 
 Pre-Requesets
 -------------
 
-* Cygwin (grep, git, svn, find, etc)
 * NTEmacs
-* TortoiseSVN
+* Cygwin (grep, git, svn, find, etc)
 * Mysql (cygwin ports)
 * PHP (cygwin ports)
+
+Optional Pre-Requesits
+----------------------
+
+* 'ccl Common Lisp
+* TortoiseSVN
+* TortoiseGIT
 * Drush
 * PowerGREP
+* Beyond Compare
+* Font: ProggyTinyTT
 
 Sane Key Config
 ---------------
@@ -81,7 +111,7 @@ Basic Movment
 * moveword M-left / M-right
 * find anything current file M-f
 * goto line C-g
-* acemove
+* ace jump mode C-S-G
 
 Smart Tabing
 
@@ -100,28 +130,29 @@ Basic Editing
 * select all C-a
 * kill current line M-k
 * duplicate current line C-d
+* kill words backwards S-tab
 
 Dealing with files
 
 * save C-s
 * rename C-S-s
-* new file here ??
 * open file in project C-o
-* open file anywhere C-S-o
-* open file navigator M-o
+* new / open file here C-S-o
+* open recent files M-o
 * open directory at file M-e
+* open directory at file in dired
 
 Controling the minibuffer
 
 * cancel minibuffer escape
 * refocus minibuffer C-9
 
-Dealing wit buffers
+Dealing with buffers
 
-* choose buffer C-space
-* choose buffer / file / recent C-S-space
+* choose buffer quick C-space
+* choose buffer list M-o
 * close buffer C-0
-* close many buffers
+* close-buffers C-S-space
 * next / prev buffer C-right/left
 * next / prev frame C-tab / C-S-tab
 
@@ -139,14 +170,12 @@ Searching in multiple files
 
 * find in file in project F1
 * find in file anywhere F2
-* find function in file F3
-* find function in project S-F3
+* find function definition (js/php) in file F3
+* find function definition (js/php) in project S-F3
 
 Publishing
 
 * share on haste F4
-* new blog post S-F4
-* publish blog post M-F4
 
 Dealing with frames
 
@@ -159,15 +188,15 @@ Dealing with frames
 
 Version Control
 
-* svn log F12
-* svn log repository C-S-F12
-* svn prevdiff S-F12
-* svn diff M-F12
-* svn commit F11
-* svn commit repository C-S-F11
-* magit
+* tortoise svn log F12
+* tortoise svn log repository C-S-F12
+* tortoise svn prevdiff S-F12
+* tortoise svn diff M-F12
+* tortoise svn commit F11
+* tortoise svn commit repository C-S-F11
+* magit status M-g
 
-Code completion
+Writing code
 
 * snippit completion tab
 * code completion S-space
@@ -179,7 +208,8 @@ Code documentation
 * look up in google C-l
 * look up php function C-S-l
 * php function popup M-l
-* read link in emacs S-M-l
+* read link in browser C-r
+* read link in emacs C-S-r
 * look up drupal function M-d
 
 Command prompts
@@ -212,4 +242,5 @@ Emacs
 * emacs parser
 * emacs shell
 * emacs evaluate
-* emacs menu C-9
+* emacs menu 
+* elisp repl

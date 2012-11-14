@@ -1,3 +1,4 @@
+
 This JavaScript editing mode supports:
 
  - strict recognition of the Ecma-262 language standard

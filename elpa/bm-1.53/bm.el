@@ -386,11 +386,12 @@ over overlays with lower priority.  *Don't* use a negative number."
     (((class grayscale)
       (background dark))  (:background "LightGray"))
     (((class color)
-      (background light)) (:foreground "White" :background "DarkBlue"))
+      (background light)) (:foreground "#6d6d6d" :background "#252525"))
     (((class color)
-      (background dark))  (:foreground "White" :background "DarkBlue")))
+      (background dark))  (:foreground "#6d6d6d" :background "#252525")))
   "Face used to highlight current line if bookmark is persistent."
   :group 'bm)
+
 
 
 (defcustom bm-fringe-face 'bm-fringe-face

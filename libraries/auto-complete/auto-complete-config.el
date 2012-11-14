@@ -4,7 +4,7 @@
 
 ;; Author: Tomohiro Matsuyama <m2ym.pub@gmail.com>
 ;; Keywords: convenience
-;; Version: 1.3.1
+;; Version: 1.4
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -33,71 +33,6 @@
 
 
 ;;;; Additional sources
-
-;; imenu
-
-(defvar ac-imenu-index nil)
-
-(ac-clear-variable-every-10-minutes 'ac-imenu-index)
-
-(defun ac-imenu-candidates ()
-  (loop with i = 0
-        with stack = (progn
-                       (unless (local-variable-p 'ac-imenu-index)
-                         (make-local-variable 'ac-imenu-index))
-                       (or ac-imenu-index
-                           (setq ac-imenu-index
-                                 (ignore-errors
-                                   (with-no-warnings
-                                     (imenu--make-index-alist))))))
-        with result
-        while (and stack (or (not (integerp ac-limit))
-                             (< i ac-limit)))
-        for node = (pop stack)
-        if (consp node)
-        do
-        (let ((car (car node))
-              (cdr (cdr node)))
-          (if (consp cdr)
-              (mapc (lambda (child)
-                      (push child stack))
-                    cdr)
-            (when (and (stringp car)
-                       (string-match (concat "^" (regexp-quote ac-prefix)) car))
-              ;; Remove extra characters
-              (if (string-match "^.*\\(()\\|=\\|<>\\)$" car)
-                  (setq car (substring car 0 (match-beginning 1))))
-              (push car result)
-              (incf i))))
-        finally return (nreverse result)))
-
-(ac-define-source imenu
-  '((depends imenu)
-    (candidates . ac-imenu-candidates)
-    (symbol . "s")))
-
-;; gtags
-
-(defface ac-gtags-candidate-face
-  '((t (:background "lightgray" :foreground "navy")))
-  "Face for gtags candidate"
-  :group 'auto-complete)
-
-(defface ac-gtags-selection-face
-  '((t (:background "navy" :foreground "white")))
-  "Face for the gtags selected candidate."
-  :group 'auto-complete)
-
-(defun ac-gtags-candidate ()
-  (ignore-errors
-    (split-string (shell-command-to-string (format "global -ci %s" ac-prefix)) "\n")))
-
-(ac-define-source gtags
-  '((candidates . ac-gtags-candidate)
-    (candidate-face . ac-gtags-candidate-face)
-    (selection-face . ac-gtags-selection-face)
-    (requires . 3)
-    (symbol . "s")))
 
 ;; yasnippet
 
@@ -143,7 +78,11 @@
   (with-no-warnings
     (if (fboundp 'yas/get-snippet-tables)
         ;; >0.6.0
-        (apply 'append (mapcar 'ac-yasnippet-candidate-1 (yas/get-snippet-tables major-mode)))
+        (apply 'append (mapcar 'ac-yasnippet-candidate-1
+                               (condition-case nil
+                                   (yas/get-snippet-tables major-mode)
+                                 (wrong-number-of-arguments
+                                  (yas/get-snippet-tables)))))
       (let ((table
              (if (fboundp 'yas/snippet-table)
                  ;; <0.6.0
@@ -163,28 +102,7 @@
 
 ;; semantic
 
-(defun ac-semantic-candidates (prefix)
-  (with-no-warnings
-    (delete ""            ; semantic sometimes returns an empty string
-            (mapcar 'semantic-tag-name
-                    (ignore-errors
-                      (or (semantic-analyze-possible-completions
-                           (semantic-analyze-current-context))
-                          (senator-find-tag-for-completion prefix)))))))
 
-(ac-define-source semantic
-  '((available . (or (require 'semantic-ia nil t)
-                     (require 'semantic/ia nil t)))
-    (candidates . (ac-semantic-candidates ac-prefix))
-    (prefix . c-dot-ref)
-    (requires . 0)
-    (symbol . "m")))
-
-(ac-define-source semantic-raw
-  '((available . (or (require 'semantic-ia nil t)
-                     (require 'semantic/ia nil t)))
-    (candidates . (ac-semantic-candidates ac-prefix))
-    (symbol . "s")))
 
 ;; eclim
 
@@ -368,70 +286,48 @@
   "Current editing property.")
 
 (defun ac-css-prefix ()
-  (when (save-excursion (re-search-backward "\\_<\\(.+?\\)\\_>\\s *:.*\\=" nil t))
+  (when (save-excursion (re-search-backward "\\_<\\(.+?\\)\\_>\\s *:[^;]*\\=" nil t))
     (setq ac-css-property (match-string 1))
     (or (ac-prefix-symbol) (point))))
 
 (defun ac-css-property-candidates ()
-  (or (loop with list = (assoc-default ac-css-property ac-css-property-alist)
-            with seen = nil
-            with value
-            while (setq value (pop list))
-            if (symbolp value)
-            do (unless (memq value seen)
-                 (push value seen)
-                 (setq list
-                       (append list
-                               (or (assoc-default value ac-css-value-classes)
-                                   (assoc-default (symbol-name value) ac-css-property-alist)))))
-            else collect value)
-      ac-css-pseudo-classes))
+  (let ((list (assoc-default ac-css-property ac-css-property-alist)))
+    (if list
+        (loop with seen
+              with value
+              while (setq value (pop list))
+              if (symbolp value)
+              do (unless (memq value seen)
+                   (push value seen)
+                   (setq list
+                         (append list
+                                 (or (assoc-default value ac-css-value-classes)
+                                     (assoc-default (symbol-name value) ac-css-property-alist)))))
+              else collect value)
+      ac-css-pseudo-classes)))
 
-(defvar ac-source-css-property
+(ac-define-source css-property
   '((candidates . ac-css-property-candidates)
     (prefix . ac-css-prefix)
     (requires . 0)))
 
+;; slime
+(ac-define-source slime
+  '((depends slime)
+    (candidates . (car (slime-simple-completions ac-prefix)))
+    (symbol . "s")
+    (cache)))
+
+;; ghc-mod
+(ac-define-source ghc-mod
+  '((depends ghc)
+    (candidates . (ghc-select-completion-symbol))
+    (symbol . "s")
+    (cache)))
+
 
 
 ;;;; Not maintained sources
-
-;; ropemacs
-
-(defvar ac-ropemacs-loaded nil)
-(defun ac-ropemacs-require ()
-  (with-no-warnings
-    (unless ac-ropemacs-loaded
-      (pymacs-load "ropemacs" "rope-")
-      (if (boundp 'ropemacs-enable-autoimport)
-          (setq ropemacs-enable-autoimport t))
-      (setq ac-ropemacs-loaded t))))
-
-(defun ac-ropemacs-setup ()
-  (ac-ropemacs-require)
-  ;(setq ac-sources (append (list 'ac-source-ropemacs) ac-sources))
-  (setq ac-omni-completion-sources '(("\\." ac-source-ropemacs))))
-
-(defun ac-ropemacs-initialize ()
-  (autoload 'pymacs-apply "pymacs")
-  (autoload 'pymacs-call "pymacs")
-  (autoload 'pymacs-eval "pymacs" nil t)
-  (autoload 'pymacs-exec "pymacs" nil t)
-  (autoload 'pymacs-load "pymacs" nil t)
-  (add-hook 'python-mode-hook 'ac-ropemacs-setup)
-  t)
-
-(defvar ac-ropemacs-completions-cache nil)
-(defvar ac-source-ropemacs
-  '((init
-     . (lambda ()
-         (setq ac-ropemacs-completions-cache
-               (mapcar
-                (lambda (completion)
-                  (concat ac-prefix completion))
-                (ignore-errors
-                  (rope-completions))))))
-    (candidates . ac-ropemacs-completions-cache)))
 
 ;; rcodetools
 
@@ -454,19 +350,6 @@
 
 ;;;; Default settings
 
-(defun ac-common-setup ()
-  (add-to-list 'ac-sources 'ac-source-filename))
-
-(defun ac-emacs-lisp-mode-setup ()
-  (setq ac-sources (append '(ac-source-features ac-source-functions ac-source-yasnippet ac-source-variables ac-source-symbols) ac-sources)))
-
-(defun ac-cc-mode-setup ()
-  (setq ac-sources (append '(ac-source-yasnippet ac-source-gtags) ac-sources)))
-
-(defun ac-ruby-mode-setup ()
-  (make-local-variable 'ac-ignores)
-  (add-to-list 'ac-ignores "end"))
-
 (defun ac-css-mode-setup ()
   (setq ac-sources (append '(ac-source-css-property) ac-sources)))
 
@@ -474,7 +357,6 @@
   (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
   (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-  (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
   (add-hook 'css-mode-hook 'ac-css-mode-setup)
   (add-hook 'auto-complete-mode-hook 'ac-common-setup)
   (global-auto-complete-mode t))

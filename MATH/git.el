@@ -1,1 +1,0 @@
-(setq git--state-mark-modeline nil)  
