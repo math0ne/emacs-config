@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: teste
+# key: teste
+# --
+hey! ${1:$$(yas/choose-value '("as\\\"d" "asdasd"))}

@@ -1,0 +1,13 @@
+;;main css mode hook
+(add-hook 'css-mode-hook (lambda ()
+  (message "CSS Mode Activated")
+  (set 'tab-width 2)
+  (setq css-indent-offset 2)
+  (set 'c-basic-offset 2)
+  (visual-line-mode)
+  (wrap-region-mode t)
+  (auto-complete-mode 1)
+  ;(local-set-key (kbd "{") 'insert-c-block-parentheses)
+  (modify-syntax-entry ?_ "w")
+  (djcb-set-cursor-according-to-mode)
+  (local-set-key (kbd "RET") 'newline-and-indent)))
