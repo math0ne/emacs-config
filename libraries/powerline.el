@@ -466,7 +466,7 @@ install the memoized function over the original function."
 (defpowerline arrow       "")
 
 
-(defpowerline buffer-id   (propertize (car (propertized-buffer-identification "%b"))
+(defpowerline buffer-id   (propertize (car (propertized-buffer-identification "   %b"))
                                       'face (powerline-make-face color1)))
 
 (defvar powerline-buffer-size-suffix t)

@@ -14,13 +14,13 @@
 
 ;;this is the hide marker
 (defface hideshowvis-hidable-face
-  '((t (:foreground "#4D4D4D" :box (:line-width 2 :color "grey75" :style released-button))))
+  '((t (:foreground "#323232" :box (:line-width 2 :color "grey75" :style released-button))))
   "Face to highlight foldable regions"
   :group 'hideshow)
 
 ;;This is the show marker
 (defface hs-fringe-face
-  '((t (:foreground "#4D4D4D" :box (:line-width 2 :color "grey75" :style released-button))))
+  '((t (:foreground "#646464" :box (:line-width 2 :color "grey75" :style released-button))))
   "Face used to highlight the fringe on folded regions"
   :group 'hideshow)
 

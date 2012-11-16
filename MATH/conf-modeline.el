@@ -4,8 +4,9 @@
 (setq powerline-color1 "#3c3c3c")
 (setq powerline-color2 "#252525")
 (custom-set-faces
-'(mode-line ((t (:foreground "#cdcdcd" :background "#6f6f6f" :box nil))))
-'(mode-line-inactive ((t (:foreground "#acacac" :background "#565656" :box nil)))))
+;;'(mode-line ((t (:foreground "#cdcdcd" :background "#6f6f6f" :box nil))))
+'(mode-line ((t (:foreground "#cdcdcd" :background "#252525" :box nil))))
+'(mode-line-inactive ((t (:foreground "#acacac" :background "#252525" :box nil)))))
 
 ;;this cleans up the modeline and hides minor modes which have no purspose
 (defvar mode-line-cleaner-alist
@@ -50,6 +51,20 @@ want to use in the modeline *in lieu of* the original.")
               ;; major mode
             (when (eq mode major-mode)
               (setq mode-name mode-str)))))
- 
- 
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
+
+
+(setq-default mode-line-format
+              (list "%e"
+                    '(:eval (concat
+                             (powerline-buffer-id      'left   nil  powerline-color1  )
+                             (powerline-major-mode     'left        powerline-color1  )
+                             (powerline-minor-modes    'left        powerline-color1  )
+                             (powerline-narrow         'left        powerline-color1  powerline-color2  )
+                             (powerline-vc             'center                        powerline-color2  )
+                             (powerline-make-fill                                     powerline-color2  )
+                             (powerline-row            'right       powerline-color1  powerline-color2  )
+                             (powerline-make-text      ":"          powerline-color1  )
+                             (powerline-column         'right       powerline-color1  )
+                             (powerline-percent        'right  nil  powerline-color1  )
+                             (powerline-make-text      "  "    nil  )))))

@@ -12,7 +12,7 @@
 ;; -- fringe mode settings
 (modify-all-frames-parameters
      (list (cons 'left-fringe 15)
-           (cons 'right-fringe 3)))
+           (cons 'right-fringe 0)))
 
 ;;this sets the window margins to be inside of the fringe
 (custom-set-variables
@@ -21,7 +21,7 @@
 ;;this add a window largin of 1 char on the left
 (add-hook 'window-configuration-change-hook
       (lambda ()
-        (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 1 0)))
+        (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 1 1)))
 
 ; to answer y or n instead of yes or no :-P ...I'm too lazy
 (defalias 'yes-or-no-p 'y-or-n-p) 

@@ -111,7 +111,7 @@ Basic Movment
 * moveword M-left / M-right
 * find anything current file M-f
 * goto line C-g
-* ace jump mode C-S-G
+* ace jump mode C-S-g
 
 Smart Tabing
 
@@ -140,7 +140,7 @@ Dealing with files
 * new / open file here C-S-o
 * open recent files M-o
 * open directory at file M-e
-* open directory at file in dired
+* open directory at file in dired C-e ;;todo
 
 Controling the minibuffer
 
@@ -152,14 +152,15 @@ Dealing with buffers
 * choose buffer quick C-space
 * choose buffer list M-o
 * close buffer C-0
-* close-buffers C-S-space
-* next / prev buffer C-right/left
+* close-buffers C-S-space ;;would like to switch
+* next / prev buffer C-right/left ;;notworking
 * next / prev frame C-tab / C-S-tab
 
 Searching the buffer
 
 * search current file c-f
 * search-replace current file c-s-f
+* search with occur mode M-f
 
 In search minibuffer
 
@@ -171,18 +172,18 @@ Searching in multiple files
 * find in file in project F1
 * find in file anywhere F2
 * find function definition (js/php) in file F3
-* find function definition (js/php) in project S-F3
+* find function definition (js/php) in project S-F3 ;;change to M-.
 
 Publishing
 
-* share on haste F4
+* share selection on haste F4
 
 Dealing with frames
 
 * split window | F5
 * split window - F6
 * smart single window F7
-* close window F8
+* close window F8 ;;not working
 * enlarge window - F9
 * enlarge window | F10
 
@@ -195,6 +196,9 @@ Version Control
 * tortoise svn commit F11
 * tortoise svn commit repository C-S-F11
 * magit status M-g
+* magit comit file ;make
+* svn status M-s ;;make
+* svn commit file ;;make
 
 Writing code
 
@@ -206,8 +210,8 @@ Writing code
 Code documentation
 
 * look up in google C-l
-* look up php function C-S-l
-* php function popup M-l
+* look up php function C-S-l ;;make this work in lisp and js mode?
+* php function popup M-l ;;make this work with elisp too
 * read link in browser C-r
 * read link in emacs C-S-r
 * look up drupal function M-d
@@ -216,17 +220,18 @@ Command prompts
 
 * shell home C-5
 * shell here C-6
+* lisp repl C-7 ;;make
+* elisp repl C-8 ;;make
 
 Org Mode
 
 * org next file
 * org projects 
-* org new file 
+* org new file ;;ahouls be normal new file key using hook
 * org collapse tab
 * org change timestamp S-up / S-down
-* org toggle todo S-left/right
+* org toggle todo C-t
 * org new line heading C-enter
-* org toggle todo M-enter
 * org archive current line C-S-a
 * org schedule item C-p
 
@@ -235,12 +240,10 @@ Bookmarks
 * set a bookmark C-b
 * jump to bookmark C-S-b
 * unset bookmark M-b
+* bookmark list M-S-b
 
 Emacs
 
 * emacs command M-x
 * emacs parser
-* emacs shell
 * emacs evaluate
-* emacs menu 
-* elisp repl
