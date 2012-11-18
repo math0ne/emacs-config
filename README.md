@@ -235,11 +235,16 @@ Org Mode
 * org archive current line C-S-a
 * org schedule item C-p
 
-Bookmarks
+Buffer Bookmarks
 
-* set a bookmark C-b
+* toggle bookmark C-b
+* toggle bookmark RIGHT-CLICK Left-Fring
 * jump to bookmark C-S-b
-* unset bookmark M-b
+
+Global Bookmarks
+
+* toggle bookmark M-b
+* toggle bookmark MIDDLE-CLICK Left-Fring
 * bookmark list M-S-b
 
 Emacs

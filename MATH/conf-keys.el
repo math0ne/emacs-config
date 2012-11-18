@@ -215,7 +215,11 @@
   (define-key my-keys-minor-mode-map (kbd "C-b") 'bm-toggle)
   ;; jump to bookmark C-S-b
   (define-key my-keys-minor-mode-map (kbd "C-S-b") 'bm-next)
-  (define-key my-keys-minor-mode-map (kbd "M-b") 'bm-previous)
+
+  ;;set perm bookmar
+  (define-key my-keys-minor-mode-map (kbd "M-b") 'bmkp-autoname-whole-line-toggle)
+  ;;set perm bookmar
+  (define-key my-keys-minor-mode-map (kbd "M-B") 'list-bookmarks)
 
   ;; emacs command M-x
   (global-set-key (kbd "M-x") 'smex)
